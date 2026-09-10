@@ -14,6 +14,9 @@ const prevbutton = document.getElementById("prev-button")
 const nextbutton = document.getElementById("next-button")
 
 const fileinput = document.getElementById("fileinput");
+const queuelist = document.getElementById("queue-list")
+let queue = [];
+
 addbutton.addEventListener("click", () =>{
     fileinput.click();
 });
@@ -63,7 +66,8 @@ function rendersongs(){
         `
         playlist.appendChild(playlistelement);
         playlistelement.addEventListener("click", () => {
-            playsong(song);
+            queue.push(song);
+            renderqueue();
         });
     });
 }
@@ -125,5 +129,29 @@ prevbutton.addEventListener("click", () =>{
 });
 
 audioplayer.addEventListener("ended", ()=>{
-    nextsong();
+    if(queue.length > 0){
+        const nextqueue = queue.shift();
+        renderqueue();
+        playsong(nextqueue);
+    }else{
+        nextsong();
+    }
 });
+
+function renderqueue(){
+    queuelist.innerHTML = "";
+    queue.forEach(song =>{
+        const queueelement = document.createElement("div")
+        queueelement.classList.add("queue-item")
+
+        queueelement.innerHTML = 
+        `<strong>${song.title}</strong>
+        <br>
+        <small>${song.artist}</small>`;
+
+        queuelist.appendChild(queueelement);
+        queueelement.addEventListener("click", () =>{
+            playsong(song);
+        });
+    });
+}
