@@ -17,6 +17,8 @@ const fileinput = document.getElementById("fileinput")
 const queuelist = document.getElementById("queue-list")
 
 const playlistsearch = document.getElementById("playlist-search")
+const sortselect = document.getElementById("sortselect")
+
 let queue = [];
 
 addbutton.addEventListener("click", () =>{
@@ -191,4 +193,27 @@ function renderedplaylist(filteredsongs){
             renderqueue();
         });
     });
+}
+
+sortselect.addEventListener("change",()=>{
+    renderplaylist();
+});
+
+function renderplaylist(){
+    let displayedsongs = [...songs];
+    const search = playlistsearch.value.toLowerCase();
+    displayedsongs = displayedsongs.filter(song =>
+        song.title.toLowerCase().includes(search) || song.artist.toLowerCase().includes(search)
+    );
+    if(sortselect.value === "Name"){
+        displayedsongs.sort((a,b) =>
+            a.title.localeCompare(b.title)
+        );
+    }
+    if(sortselect.value === "Artist"){
+        displayedsongs.sort((a,b) =>
+            a.artist.localeCompare(b.artist)
+        );
+    }
+    renderedplaylist(displayedsongs);
 }
