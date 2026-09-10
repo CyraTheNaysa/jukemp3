@@ -13,8 +13,10 @@ const playbutton = document.getElementById("play-button")
 const prevbutton = document.getElementById("prev-button")
 const nextbutton = document.getElementById("next-button")
 
-const fileinput = document.getElementById("fileinput");
+const fileinput = document.getElementById("fileinput")
 const queuelist = document.getElementById("queue-list")
+
+const playlistsearch = document.getElementById("playlist-search")
 let queue = [];
 
 addbutton.addEventListener("click", () =>{
@@ -160,6 +162,33 @@ function renderqueue(){
         queuelist.appendChild(queueelement);
         queueelement.addEventListener("click", () =>{
             playsong(song);
+        });
+    });
+}
+
+playlistsearch.addEventListener("input",()=>{
+    const search = playlistsearch.value.toLowerCase();
+    const filteredsongs = songs.filter(song =>
+        song.title.toLowerCase().includes(search) || song.artist.toLowerCase().includes(search)
+    );
+    renderedplaylist(filteredsongs);
+})
+
+function renderedplaylist(filteredsongs){
+    playlist.innerHTML="";
+    filteredsongs.forEach(song =>{
+        const playlistelement = document.createElement("div")
+        playlistelement.classList.add("playlist-item");
+        playlistelement.innerHTML = `
+        <strong>${song.title}</strong>
+        <br>
+        <small>${song.artist}</small>`;
+
+        playlist.appendChild(playlistelement);
+        playlistelement.addEventListener("click",() =>{
+            if(queue.includes(song)) return;
+            queue.push(song);
+            renderqueue();
         });
     });
 }
