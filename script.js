@@ -5,36 +5,37 @@ const addbutton = document.getElementById("add-button");
 const playlist = document.getElementById("playlist-list")
 const songlist = document.getElementById("songlist")
 
-const audioplayer = document.getElementById("audio-player")
 const currenttitle = document.getElementById("current-title")
 const currentauthor = document.getElementById("current-artist")
-const playbutton = document.getElementById("play-button")
 
+const audioplayer = document.getElementById("audio-player")
+const playbutton = document.getElementById("play-button")
+const prevbutton = document.getElementById("prev-button")
+const nextbutton = document.getElementById("next-button")
+
+const fileinput = document.getElementById("fileinput");
 addbutton.addEventListener("click", () =>{
+    fileinput.click();
+});
+
+fileinput.addEventListener("change",() =>{
+    const file = fileinput.files[0];
+    if(!file) return;
     const title = prompt("Song Title : ")
     if(!title) return;
     const artist = prompt("Song Artist : ")
     if(!artist) return;
+    
+    const song = {
+        id: Date.now(),
+        title: title,
+        artist: artist,
+        file: file
+    };
 
-    const fileinput = document.createElement("input");
-    fileinput.type = "file";
-    fileinput.accept = "audio/*";
-    fileinput.click();
-
-    fileinput.addEventListener("change", ()=>{
-        const file = fileinput.files[0];
-        if(!file) return;
-        const song = {
-            id: Date.now(),
-            title: title,
-            artist: artist,
-            file: file
-        };
-
-        songs.push(song);
-        rendersongs();
-    });
-
+    songs.push(song);
+    rendersongs();
+    fileinput.value = "";
 });
 
 function rendersongs(){
@@ -67,6 +68,8 @@ function rendersongs(){
     });
 }
 
+
+
 function playsong(song){
     currentsong = song;
     const songurl = URL.createObjectURL(song.file);
@@ -93,4 +96,34 @@ audioplayer.addEventListener("play",() =>{
 
 audioplayer.addEventListener("pause",() =>{
     playbutton.textContent = "O";
+});
+
+function nextsong(){
+    if(!currentsong) return;
+
+    const currentindex = songs.indexOf(currentsong);
+    const nextindex = currentindex + 1;
+    if(nextindex >= songs.length) return;
+    playsong(songs[nextindex]);
+}
+
+nextbutton.addEventListener("click", () =>{
+    nextsong();
+});
+
+function prevsong(){
+    if(!currentsong) return;
+
+    const currentindex = songs.indexOf(currentsong);
+    const previousindex = currentindex - 1;
+    if(previousindex < 0) return;
+    playsong(songs[previousindex]);
+}
+
+prevbutton.addEventListener("click", () =>{
+    prevsong();
+});
+
+audioplayer.addEventListener("ended", ()=>{
+    nextsong();
 });
