@@ -160,3 +160,24 @@ h3{
     padding: 12px 30px;
     cursor: pointer;
 }
+
+.song-item{
+    padding: 12px 10px;
+    border-bottom: 3px solid black;
+    cursor: pointer;
+}
+
+.song-item:hover{
+    background: #eee;
+}
+
+.playlist-item{
+    padding: 10px;
+    border: 2px solid black;
+    margin: 6px;
+    cursor: pointer;
+}
+
+.playlist-item:hover{
+    background:#eee;
+}
