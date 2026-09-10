@@ -66,6 +66,7 @@ function rendersongs(){
         `
         playlist.appendChild(playlistelement);
         playlistelement.addEventListener("click", () => {
+            if(queue.includes(song)) return;
             queue.push(song);
             renderqueue();
         });
@@ -147,8 +148,15 @@ function renderqueue(){
         queueelement.innerHTML = 
         `<strong>${song.title}</strong>
         <br>
-        <small>${song.artist}</small>`;
-
+        <small>${song.artist}</small>
+        <button class="remove-button">X</button>`;
+        const removebutton = queueelement.querySelector(".remove-button");
+        removebutton.addEventListener("click",(event)=>{
+            event.stopPropagation();
+            const songindex = queue.indexOf(song);
+            queue.splice(songindex,1);
+            renderqueue();
+        })
         queuelist.appendChild(queueelement);
         queueelement.addEventListener("click", () =>{
             playsong(song);
