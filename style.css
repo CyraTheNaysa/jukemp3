@@ -27,3 +27,136 @@ body{
     height:100%;
     overflow-y: auto;
 }
+
+.main-player{
+    padding:10 px;
+    display:flex;
+    flex-direction:column;
+    gap:8 px;
+}
+
+.search-bar input{
+    width: 100%;
+    height: 35px;
+    border: 3px solid black;
+    padding: 5px 10px;
+    font-size: 15px;
+}
+
+.player-section{
+    display:grid;
+    grid-template-columns: 1fr 260px;
+    height: 170px;
+    border: 3px solid black;
+}
+
+.currently-playing{
+    padding: 8px;
+    border-right: 3px solid black;    
+}
+
+.queue{
+    padding:8px;
+    overflow:hidden;
+}
+
+h3{
+    margin: 0 0 8px 0;
+    font-size: 16px;
+}
+
+.now-playing-content{
+    display: flex;
+    gap: 15px;
+}
+
+.album-art{
+    width: 120px;
+    height: 120px;
+    border: 3px solid black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;    
+}
+
+.track-info{
+    flex: 3;
+}
+
+.playlist-name{
+    margin: 5px 0;
+    font-size: 20px;
+}
+
+.track-info p{
+    margin: 5px 0;
+}
+
+.controls button{
+    background: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.controls button:hover{
+    transform: scale(1.1);
+}
+
+#queue-list{
+    height: 125px;
+    overflow-y: auto;
+}
+
+.queue-item{
+    padding: 8px;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.queue-item:hover{
+    background: #eee;
+}
+
+.playlist-header{
+    display:flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.playlist-header h3{
+    margin-right: auto;
+}
+
+.playlist-header button{
+    width:35px;
+    height:35px;
+    background: white;
+    border: 3px solid black;
+    font-size: 25px;
+    cursor:pointer
+}
+
+.playlist-header select,
+.playlist-header input{
+    height: 35px;
+    border: 3px solid black;
+}
+
+.request-section{
+    height: 80px;
+}
+
+.request-section p{
+    margin:5px 0;
+}
+
+.request-section button{
+    background: black;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    cursor: pointer;
+}
