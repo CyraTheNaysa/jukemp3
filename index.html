@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF=8">
+    <meta name="viewport" content="width=device-width, initial scale=1.0">
+    <title>Jukemp3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<main class="music-player">
+    <aside class="song-library">
+        <div class="song-list" id="songlist">
+
+        </div>
+    </aside>
+    <section class="main-player">
+        <div class="search-bar">
+            <input type="text" id="searchinput" placeholder="Search...">
+        </div>
+        <div class="player-section">
+            <section class="currently-playing">
+                <h3>Currently Playing</h3>
+                <div class="now-playing-content">
+                    <div class="album art">
+                        O
+                    </div>
+                    <div class="track-info">
+                        <p class="playlist-name">
+                            No Playlist yett, create one!
+                        </p>
+
+                        <h2 id="current-title">
+                            No Music :c
+                        </h2>
+
+                        <p id="current-artist">
+                            -
+                        </p>
+                        <div class="controls">
+                            <button id="prev-button">
+                                O~
+                            </button>
+
+                            <button id="next-button">
+                                ~O
+                            </button>
+                            <button id="play-button">
+                                O
+                            </button>
+                            <button id="repeat-button">
+                                @
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="queue">
+                <h3>On Queue</h3>
+                <div id="queue-list">
+
+                </div>
+            </section>
+        </div>
+        <section class="playlist-section">
+            <div class="playlist-header">
+                <h3>My Playlist</h3>
+                <button id="add-button">
+                    +
+                </button>
+                <select id="sortselect">
+                    <option>Sort by</option>
+                    <option>Name</option>
+                    <option>Artist</option>
+                </select>
+                <input type="text" id="playlistsearch" placeholder="Search...">
+            </div>
+
+            <div id="playlist-list">
+
+            </div>
+        </section>
+
+        <section class="request-section">
+            <h3>Can't find your music?</h3>
+            <p>Send a request to fix my music taste :C</p>
+
+            <button id="requestbutton">
+                Request
+            </button>
+        </section>
+    </section>
+</main>

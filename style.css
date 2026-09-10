@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: white;
+    color: black;
+}
+
+.music-player{
+    height: 600px;
+    width: 1000px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: 275px 1fr;
+    border: 3px solid black;
+}
+
+.song-library{
+    border: 3px solid black;
+    overflow: hidden;
+}
+
+.song-list{
+    height:100%;
+    overflow-y: auto;
+}
